@@ -3,9 +3,11 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
-
-
+define e = Character("...")
+define y = Character("You")
+define m = Character("Mashroom Guy")
+define t = Character("TV Guy")
+define r = Character("Rainy Girl")
 
 # The game starts here.
 
@@ -97,31 +99,86 @@ label start:
     label choice3_correct:
         $ menu_flag = True
         e "Oh, marvelous! Certainly a morel victory! Time to cap off this visit."
+        jump TV
 
     
 
+    label TV:
+    scene TV Guy arcade
 
-    #menu:
+    show TV Guy
+
+    t "(Change here)"
+
+    menu:
+        "(put questions here.)"
 
 
-    # scene TV Guy arcade
+        "Answer1": #change the place of correct answer
+            jump choice21_correct
 
-    # show TV Guy
 
-    # scene Rainy girl hallway
+        "Answer2":
+            jump choice1_incorrect
 
-    # show Rainy girl
 
-    # scene Ending
+        "Answer3":
+            jump choice1_incorrect
 
-    # show finish
 
-    # scene wake up good
+    label choice21_correct:
+        $ menu_flag = True
+        e "You know quite a bit about fun guys like me it seems."
+        jump Rainy
 
-    # e "You open your eyes to see your own bedroom. Your "
+    label Rainy:
+    scene Rainy girl hallway
+
+    show Rainy girl
+
+    r "(she is crying)"
+
+    menu:
+        "(put actions here.)"
+
+
+        "Answer1": #change the place of correct answer
+            jump choice31_correct
+
+
+        "Answer2":
+            jump choice1_incorrect
+
+
+        "Answer3":
+            jump choice1_incorrect
+
+    label choice31_correct:
+        $ menu_flag = True
+        e "You know quite a bit about fun guys like me it seems."
+        jump Ending
+
+    label Ending:
+    scene Ending
+
+    show finish
+
+    e "/"
+
+    scene wake up good
+
+
+    e "You open your eyes to see your own bedroom. Your "
+
+
+
 
 
 
     # This ends the game.
 
+
     return
+
+
+
