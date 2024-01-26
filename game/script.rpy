@@ -5,31 +5,37 @@
 
 define e = Character("...")
 define y = Character("You")
-define m = Character("Mashroom Guy")
-define t = Character("TV Guy")
-define c = Character("Cloud Girl")
 
+define m = Character("Mushroom Guy")
+define t = Character("TV Guy")
+define r = Character("Rainy Girl")
+
+# The game starts here.
 
 label start:
 
-    scene bg room
-
-    show eileen happy
-
-    "You wake from a deep sleep to find yourself in a strange world."
     
-    "The colors seem off, distorted, unreal. You don't recognize the world around you."
+    scene black
+    
+
+    e "You wake from a deep sleep to find yourself in a strange world."
+    scene bg forest with Dissolve(2.0)
+    e "The colors seem off, distorted, unreal. You don't recognize the world around you."
 
     "You look up to see a strange figure before you."
 
-    # scene mushroom guy
+    show mushroom_1 with moveinright:
+        xalign 1.0
+        yalign 0.5
+        
 
-    # show mushroom
-    "Oh! A visitor! Good, I was getting spored out of my mind!"
 
-    ""
+    m "Oh! A visitor! Good, I was getting spored out of my mind!"
 
-    "What role do mushrooms typically play in an ecosystem?"
+    m "I hope you're having a pleasent trip. We could use more visitors like you. To stay here, you'll need to pass a little test. Don't worry, it won't be too punishing!"
+
+    m "What role do mushrooms typically play in an ecosystem?"
+
 
     menu:
         
@@ -56,7 +62,9 @@ label start:
 
     label choice1_done:
     
-    "Here's where shiitake gets real: what part of a mushroom is responsible for releasing spores?"
+
+    m "Here's where shiitake gets real: what part of a mushroom is responsible for releasing spores?"
+
 
     menu:
         "Cap":
@@ -73,7 +81,7 @@ label start:
 
     label choice2_done:
 
-    e "Don't trip up now! This is the most crucial question of them all: what type of mushroom am I?"
+    m "Don't trip up now! This is the most crucial question of them all: what type of mushroom am I?"
 
     menu:
         "Fly agaric":
@@ -86,37 +94,38 @@ label start:
     label choice3_correct:
         $ menu_flag = True
         m "Oh, marvelous! Certainly a morel victory! Time to cap off this visit."
-        jump TV
+
+        hide mushroom_1 
+
+        show mushroomspores:
+            xalign 0.5
+            yalign 0.5
+            zoom 2.0
+
+
+        e "He holds up his hand and blows toward you emitting a dense cloud of spores."
+        scene black with Dissolve(1.5)
+        e "For a moment, you can't see anything."
+        
+        jump choice3_done
+
+    label choice3_done:
 
     
+    e "As the cloud disperses, blinking lights emerge all around you. It looks like flashbulbs at a sporting event, but as the room resolves itself around you... "
+    scene bg arcade with Dissolve(1.5)
+    
+    e "...you see that you are in the middle of an old arcade."
 
-    label TV:
-    scene TV Guy arcade
+    e "In front of you stands another strange figure..."
 
-    show TV Guy
-
-    t "(Change here)"
-
-    menu:
-        "(put questions here.)"
-
-
-        "Answer1": #change the place of correct answer
-            jump choice21_correct
+    show TVmanconfused with moveinright:
+        xalign 1.0
 
 
-        "Answer2":
-            jump choice1_incorrect
 
 
-        "Answer3":
-            jump choice1_incorrect
-
-
-    label choice21_correct:
-        $ menu_flag = True
-        t "You know quite a bit about fun guys like me it seems."
-        jump Cloud
+    t "WELCOME! To the GREATEST SHOW YOU EVER IMAGINED!"
 
     label Cloud:
     scene Cloudgirl hallway
@@ -125,6 +134,7 @@ label start:
 
     c "You would enter one of the brightest rooms where smell of blooming flowers and shining sun would meet you. You would feel some sort of comfort
 until you stumble upon crying Cloud Girl."
+
 
     #label choice31:
     menu:
@@ -140,10 +150,12 @@ until you stumble upon crying Cloud Girl."
     
         "She would cry even louder."
 
+
         y "Okay okay... Sorry! Just don't cry!"
         jump choice1_incorrect
 
     label reply31_correct:
+
 
         c "Yeah... I am just feeling under the weather."
 
