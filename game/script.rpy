@@ -7,6 +7,7 @@ define e = Character("...")
 define y = Character("You")
 define m = Character("Mashroom Guy")
 define t = Character("TV Guy")
+define s = Character("MR. STATIC ")
 define c = Character("Cloud Girl")
 
 
@@ -90,33 +91,469 @@ label start:
 
     
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     label TV:
     scene TV Guy arcade
 
     show TV Guy
 
-    t "(Change here)"
+    "Once mushroom lets out his spore cloud you would cough immediately. But once smoke fads away you notice you are no longer in the woods but in a colorful arcade."
 
+    "The laughter and crowd chattering would fill entire arcade along with the static sounds of machines. Until you hear how someone loudly would speak up in distance."
+
+    "But for your surprise it was a TV guy who seemed to be a host of the event in the arcade!"
+
+    t "WELCOM! To the GREATEST SHOW YOU EVER IMAGINED!"
+
+    t "I'M YOUR HOST - MR. STATIC!"
+
+    t "But before we start our GREATEST show, we need a volunteer!"
+
+    #label choice21
     menu:
-        "(put questions here.)"
+        "I hope he doesn't choose me...":
+            jump choice21_incorrect
 
-
-        "Answer1": #change the place of correct answer
+        "You would raise a hand.":
             jump choice21_correct
 
+    label choice21_incorrect:
+        $ menu_flag = False
 
-        "Answer2":
-            jump choice1_incorrect
+        s "YOU!"
 
-
-        "Answer3":
-            jump choice1_incorrect
-
+        y "Dang it..."
+        jump choice_incorrect
 
     label choice21_correct:
         $ menu_flag = True
-        t "You know quite a bit about fun guys like me it seems."
+        t "YOU!"
+        jump choice21_done
+
+    label choice21_done:
+    
+    s "Please come to the stage!"
+
+    s "And LET THE SHOW BEGIN!"
+
+    "You would get on the stage and look at Mr.Static confusingly!"
+
+    s "So...ARE YOU READY?!"
+
+
+    #label choice22:
+    menu:
+        "What brand are you?":
+            jump choice22_incorrect
+        
+        "Do I have a choice?":
+            jump choice_22_correct
+        
+    label choice22_incorrect:
+        $ menu_flag = False
+
+        s "Samsung... *angry eyes*"
+        jump choice_incorrect
+
+    label choice_22_correct:
+        $ menu_flag = True
+
+        s "NOPE!"
+
+        y "Well then! Let's get over with it."
+        jump choice22_done
+
+    label choice22_done:
+
+        s "THAT'S WHAT I LIKE TO HEAR!"
+
+        s "NOW LET'S BEGIN!"
+
+        "Game would start!"
+    
+    #label choice23:
+    #Quiz is going
+    #
+    #
+    #
+    #
+    #
+
+
+    label win:
+
+        s "HOLY *beep noises*!"
+
+        s "WE HAVE A WINNER!"
+
+        s "THIS IS THE FIRST TIME SOMEONE HAVE EVER WON IN OUR GREATEST SHOW!"
+
+        s "CONGRATULATIONS! AND WE LOOKING FORWARD TO SEE YOU AGAIN!"
+
+        y "I hope not... *angry eyes*"
+
+        "Crowd would applaud and start shooting confetti."
+
+        s "Now moving on to-"
+
+        "You would appear in one of the brightest rooms where sell of blooming flowers and shining light would meet you. You would feel some sort of comfort until you stumble upon crying Cloud Girl."
         jump Cloud
+    
+    label lose:
+
+        y "Awh what a shame!"
+
+        s "You were SO CLOSE to victory!"
+
+        y "And what happens with losers?"
+
+        s "THEY"
+
+        s "WAKE"
+
+        s "UP!"
+
+        s "Now moving on to-"
+
+        "But before Mr. Static could finish, you would suddenly wake up."
+        jump choice_incorrect
+
+
+
+
+
+
+
+     
+
+
+
+
 
     label Cloud:
     scene Cloudgirl hallway
